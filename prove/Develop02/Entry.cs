@@ -26,16 +26,17 @@ public class Entry
             Prompt thePrompt = new Prompt();
             thePrompt.GetRandomPrompt();
             _prompt = thePrompt._currentPrompt;
-            Console.WriteLine("");
             _currentEntry = Console.ReadLine();
             Console.WriteLine("");
             Console.WriteLine("Would you like to add an spiritual impresison to this journal entry? (Y)es or (N)o");
             string userInput = Console.ReadLine();
             if(userInput.ToLower() == "y") {
+                Console.WriteLine("");
                 Impression theImpression = new Impression();
                 theImpression.GetNewEntry();
                 _impression = theImpression;
             }
+            Console.WriteLine("");
         }
 
     }

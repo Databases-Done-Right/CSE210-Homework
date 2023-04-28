@@ -30,6 +30,8 @@ public class Journal
                 theEntry._impression._currentEntry = parts[3];
                 _entry.Add(theEntry);
             }
+            Console.WriteLine($"{_entry.Count} journal entries have been successfully loaded. Press any key to contine.");
+            string _ = Console.ReadLine();
         }
         public bool MainMenu()
         {
@@ -81,6 +83,8 @@ public class Journal
                     outputFile.WriteLine($"{_entry[a]._date} | {_entry[a]._prompt} | {_entry[a]._currentEntry} | {_entry[a]._impression._currentEntry}");
                 }
             }
+            Console.WriteLine($"{_entry.Count} journal entries have been successfully saved to file {userInput}. Press any key to contine.");
+            string _ = Console.ReadLine();
         }
 
     }
