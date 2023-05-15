@@ -1,10 +1,11 @@
 public class BreathingActivity : Activity {
     private int _breathIn = 4;
     private int _breathOut = 6;
-    private string _instructions = "This activity will help you relay by guiding you through breathing in and out slowly. Clear your mind and focus on your breathing.";
 
     // constructor
     public BreathingActivity() {
+        _activityName = "Breathing Activity";
+        _description = "This activity will help you relay by guiding you through breathing in and out slowly. Clear your mind and focus on your breathing.";
     }
 
     public void BreathInAndOut(int duration) {
@@ -12,25 +13,18 @@ public class BreathingActivity : Activity {
         while(DateTime.Now < futureTime) {
             Console.WriteLine($"");
             Console.Write($"Breath in ... ");
-            for(int b=_breathIn; b>0; b--) {
-                Console.Write($"{b}");
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-            }
+            CountDown(_breathIn);
             Console.WriteLine($"");
             Console.Write($"Breath out ... ");
-            for(int b=_breathOut; b>0; b--) {
-                Console.Write($"{b}");
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-            }
+            CountDown(_breathOut);
         }
+        Console.WriteLine("");
     }
 
     public void DoActivity() {
-        int duration = BeginActivity("Breathing", _instructions);
+        int duration = BeginActivity(_activityName, _description);
         BreathInAndOut(duration);
-        FinishActivity("Breathing");
+        EndActivity(_activityName);
     }
 
 }

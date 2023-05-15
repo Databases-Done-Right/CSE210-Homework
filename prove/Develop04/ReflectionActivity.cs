@@ -1,17 +1,12 @@
 public class ReflectionActivity : Activity {
-    private string _instructions = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you to recognie the power you have over your live and how you can apply it in other aspects of your life.";
     private List<string> _prompt = new List<string>();
     private List<string> _question = new List<string>();
 
     // constructor
-    public void DoActivity() {
-        int duration = BeginActivity("Reflection", _instructions);
-        ShowInitialPrompt();
-        ShowQuestions(duration);
-        FinishActivity("Reflecting");
-    }
-    
     public ReflectionActivity() {
+        _activityName = "Reflection Activity";
+        _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you to recognie the power you have over your live and how you can apply it in other aspects of your life.";
+
         _prompt.Add("Think of a time when you stood up for someone else.");
         _prompt.Add("Think of a time when you did something really difficult.");
         _prompt.Add("Think of a time when you helped someone in need.");
@@ -26,8 +21,15 @@ public class ReflectionActivity : Activity {
         _question.Add("What could you learn from this experience that applied to other situations?");
         _question.Add("What did you learn about yourself through this experience?");
         _question.Add("How can you keep this experience in mind in the future?");
+
     }
 
+    public void DoActivity() {
+        int duration = BeginActivity(_activityName, _description);
+        ShowInitialPrompt();
+        ShowQuestions(duration);
+        EndActivity(_activityName);
+    }
     public void ShowInitialPrompt() {
         Console.WriteLine($"Consider the following prompt:");
         Console.WriteLine($"");

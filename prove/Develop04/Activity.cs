@@ -1,4 +1,6 @@
 public class Activity {
+    protected string _activityName = "";
+    protected string _description = "";
     protected int _duration = 0;
 
     // constructor
@@ -10,6 +12,14 @@ public class Activity {
         SetDuration();
         GetReady();
         return _duration;
+    }
+
+    protected void CountDown(int seconds) {
+        for(int b=seconds; b>0; b--) {
+            Console.Write($"{b}");
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
     }
 
     protected void DisplayAnimation(int seconds) {
@@ -30,7 +40,7 @@ public class Activity {
     }
     private void DisplayInstructions(string activityName, string instructions) {
         Console.Clear();
-        Console.WriteLine($"Welcome to the {activityName} Activity");
+        Console.WriteLine($"Welcome to the {activityName}");
         Console.WriteLine("");
         Console.WriteLine($"{instructions}");
     }
@@ -54,11 +64,11 @@ public class Activity {
         Console.Write($"{currentPrompt}");
     }
 
-    protected void FinishActivity(string activityName) {
+    protected void EndActivity(string activityName) {
         Console.WriteLine("");
         Console.WriteLine($"Well done!");
         Console.WriteLine("");
-        Console.WriteLine($"You have successfully completed the {activityName} Activity. Now don't you feel better?");
+        Console.WriteLine($"You have successfully completed the {activityName}. Now don't you feel better?");
         Thread.Sleep(3500);
     }
     protected void GetReady() {

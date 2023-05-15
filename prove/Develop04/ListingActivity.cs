@@ -1,9 +1,11 @@
 public class ListingActivity : Activity {
-    private string _instructions = "This activity will help you reflect on good things in your life by having you list as many things as you can in a certain area.";
     private List<string> _prompt = new List<string>();
 
     // constructor
     public ListingActivity() {
+        _activityName = "Listing Activity";
+        _description = "This activity will help you reflect on good things in your life by having you list as many things as you can in a certain area.";
+
         _prompt.Add("Who are people that you appreciate?");
         _prompt.Add("What are personal strengths of yours?");
         _prompt.Add("Who are people that you have helped this week?");
@@ -12,9 +14,9 @@ public class ListingActivity : Activity {
     }
 
     public void DoActivity() {
-        int duration = BeginActivity("Listing", _instructions);
+        int duration = BeginActivity(_activityName, _description);
         DoList(duration);
-        FinishActivity("Listing");
+        EndActivity(_activityName);
     }
 
     public void DoList(int duration) {
@@ -24,11 +26,7 @@ public class ListingActivity : Activity {
         Console.WriteLine($"");
         Console.WriteLine($"");
         Console.Write($"You may begin in: ");
-        for(int b=5; b>0; b--) {
-           Console.Write($"{b}");
-           Thread.Sleep(1000);
-           Console.Write("\b \b");
-        }
+        CountDown(5);
         Console.WriteLine($"");
 
         int flagCount = 0;
