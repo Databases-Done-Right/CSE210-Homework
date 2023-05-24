@@ -1,0 +1,3 @@
+Basic | Simple Goal #1 | Description for simple goal #1 | 1000 | False
+Eternal | Eternal Goal #1 | Description for eternal goal #1 | 200 | False | 0
+Checklist | Checklist Goal #1 | Description for checklist #1 goal | 1 | False | 5 | 1000 | 0
