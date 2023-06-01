@@ -4,13 +4,23 @@ public class Other : Entry {
     // constructor
     public Other() {
     }
-    public Other(string name, string description) : base(name, description) {
+    public Other(Entry entry, string material) : base(entry.GetName(), entry.GetDescription(), entry.GetDivision()) {
+        _material = material;
     }
-    public Other(string name, string description, string material) : base(name, description) {
+    public Other(string name, string description, string division, string place, string material) : base(name, description, division, place) {
         _material = material;
     }
 
-    public override void GetDetails() {
-        // overridden at child level, polymorphism
+    protected override string GetDetails() {
+        return "Other | " + GetName() + " | " + GetDescription() + " | " + GetDivision() + " | " + GetPlace() + " | " + _material;
+    }
+    public override string GetEntryInfo() {
+        string tbr = "Other (" + GetDivision() + ")";
+        if(GetPlace() != null && GetPlace() != "") {
+            tbr += " (" + GetPlace() + ")";
+        }
+        tbr += " " + GetName() + " - " + GetDescription();
+        tbr += " Material: " + _material;
+        return tbr;
     }
 }
